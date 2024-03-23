@@ -2,7 +2,7 @@ name: Assignment Checker
 
 on:
   schedule:
-    - cron: '45 11 * * *' # Her gün 11:45'te çalıştır
+    - cron: '50 11 * * *'
 
 jobs:
   check-assignments:
