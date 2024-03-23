@@ -2,6 +2,8 @@ name: Kotlin CI
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -17,11 +19,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-      - name: Download and Install Gradle (If gradlew doesn't exist)
-        run: |
-          if [ ! -f "./gradlew" ]; then
-            # ... (Gradle indirme adımları)
-          fi
-
       - name: Compile and Run Kotlin code
-        run: ./gradlew run
+        run: |
+          kotlinc src/main/kotlin/main.kt -include-runtime -d main.jar
+          java -jar main.jar
