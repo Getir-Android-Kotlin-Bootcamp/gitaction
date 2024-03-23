@@ -996,6 +996,7 @@ fun printCarDataClass() {
 data class Product(
     val name: String,
     val price: Double,
+    //action deneme
 ) {
     operator fun plus(other: Product) = Product(name + other.name, price + other.price)
 }
