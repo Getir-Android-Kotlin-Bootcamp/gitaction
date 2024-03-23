@@ -1,0 +1,6 @@
+# Kotlin script configuration
+script:
+  # Specify the script file to run
+  file: main.kts
+  # Specify the command to execute the script
+  command: kotlinc -script main.kts
