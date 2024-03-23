@@ -1,6 +1,6 @@
 name: Kotlin CI
 
-on: [push]  # Trigger the workflow on push events
+on: [push]  # İş akışını push olaylarında tetikle
 
 jobs:
   build:
@@ -9,11 +9,23 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up JDK 11
+      - name: JDK 11'i Kur
         uses: actions/setup-java@v3
         with:
           java-version: '11'
           distribution: 'adopt'
 
-      - name: Compile and run Kotlin code
-        run: ./gradlew run
+      - name: Gradle'ı İndir ve Kur
+        # Gradlew'in varlığını kontrol et
+        if: !test -f "./gradlew"
+        run: |
+          # Gradle versiyonunu değiştirmek için burayı güncelleyin
+          GRADLE_VERSION="7.6.1"
+
+          curl -L https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip -o gradle.zip
+          unzip -d . gradle.zip
+          rm gradle.zip
+          mv gradle-$GRADLE_VERSION/bin/gradle .
+
+      - name: Kotlin kodunu derle ve çalıştır
+        run: ./gradle run
