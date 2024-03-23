@@ -1,6 +1,21 @@
-# Kotlin script configuration
-script:
-  # Specify the script file to run
-  file: main.kts
-  # Specify the command to execute the script
-  command: kotlinc -script main.kts
+name: Assignment Checker
+
+on:
+  schedule:
+    - cron: '45 11 * * *' # Her gün 11:45'te çalıştır
+
+jobs:
+  check-assignments:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Setup JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11' # veya uygun olan JDK sürümünü belirtin
+
+      - name: Run Kotlin script
+        run: kotlinc -script main.kts
