@@ -1,7 +1,7 @@
 name: Kotlin CI
 
 on:
-  push:  
+  push:
 
 jobs:
   build:
@@ -18,9 +18,10 @@ jobs:
           distribution: 'adopt'
 
       - name: Download and Install Gradle (If gradlew doesn't exist)
-        if: test -f "./gradlew"  # Check for gradlew existence
         run: |
-          # ... (Gradle indirme adımları)
+          if [ ! -f "./gradlew" ]; then
+            # ... (Gradle indirme adımları)
+          fi
 
       - name: Compile and Run Kotlin code
         run: ./gradlew run
