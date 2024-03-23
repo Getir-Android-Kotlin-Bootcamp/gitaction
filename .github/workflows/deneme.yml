@@ -1,9 +1,6 @@
 name: Kotlin CI
 
-on:
-  push:
-    branches:
-      - main
+on: [push]  # İş akışını push olaylarında tetikle
 
 jobs:
   build:
