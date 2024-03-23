@@ -18,5 +18,5 @@ jobs:
 
       - name: Compile and Run Kotlin code
         run: |
-          kotlinc src/main/kotlin/main.kt -include-runtime -d main.jar
+          kotlinc Main.kt -include-runtime -d main.jar
           java -jar main.jar
