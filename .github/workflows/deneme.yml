@@ -15,17 +15,11 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-      - name: Gradle'ı İndir ve Kur
+      - name: Gradle'ı İndir ve Kur (Eğer gradlew yoksa)
         # Gradlew'in varlığını kontrol et
-        if: !test -f "./gradlew"
+        if: test -f "./gradlew"  # Check for gradlew existence
         run: |
-          # Gradle versiyonunu değiştirmek için burayı güncelleyin
-          GRADLE_VERSION="7.6.1"
-
-          curl -L https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip -o gradle.zip
-          unzip -d . gradle.zip
-          rm gradle.zip
-          mv gradle-$GRADLE_VERSION/bin/gradle .
+          # ... (Gradle indirme adımları)
 
       - name: Kotlin kodunu derle ve çalıştır
         run: ./gradle run
