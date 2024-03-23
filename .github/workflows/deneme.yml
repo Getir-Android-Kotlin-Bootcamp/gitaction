@@ -16,10 +16,10 @@ jobs:
           distribution: 'adopt'
 
       - name: Gradle'ı İndir ve Kur (Eğer gradlew yoksa)
-        # Gradlew'in varlığını kontrol et
+        # **Corrected indentation (two spaces)**
         if: test -f "./gradlew"  # Check for gradlew existence
-        run: |
-          # ... (Gradle indirme adımları)
+          run: |
+            # ... (Gradle indirme adımları)
 
       - name: Kotlin kodunu derle ve çalıştır
         run: ./gradle run
